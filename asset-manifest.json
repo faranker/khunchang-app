@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/khunchang-app/static/css/main.d91d88fe.css",
-    "main.js": "/khunchang-app/static/js/main.8fc2cc39.js",
+    "main.css": "/khunchang-app/static/css/main.ee38faa5.css",
+    "main.js": "/khunchang-app/static/js/main.0129eb66.js",
     "static/js/787.60a19f85.chunk.js": "/khunchang-app/static/js/787.60a19f85.chunk.js",
+    "static/media/1680x1050-px-backgrounds-brown-burn-dark-darker-804926-wallhere.com.jpg": "/khunchang-app/static/media/1680x1050-px-backgrounds-brown-burn-dark-darker-804926-wallhere.com.e418aa00f84a283a555b.jpg",
     "static/media/logo.svg": "/khunchang-app/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "static/media/slick.svg": "/khunchang-app/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/khunchang-app/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/khunchang-app/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/khunchang-app/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/khunchang-app/index.html",
-    "main.d91d88fe.css.map": "/khunchang-app/static/css/main.d91d88fe.css.map",
-    "main.8fc2cc39.js.map": "/khunchang-app/static/js/main.8fc2cc39.js.map",
+    "main.ee38faa5.css.map": "/khunchang-app/static/css/main.ee38faa5.css.map",
+    "main.0129eb66.js.map": "/khunchang-app/static/js/main.0129eb66.js.map",
     "787.60a19f85.chunk.js.map": "/khunchang-app/static/js/787.60a19f85.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d91d88fe.css",
-    "static/js/main.8fc2cc39.js"
+    "static/css/main.ee38faa5.css",
+    "static/js/main.0129eb66.js"
   ]
 }
