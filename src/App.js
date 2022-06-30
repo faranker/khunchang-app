@@ -7,9 +7,10 @@ import Home from './Home'
 function App() {
   return (
     <div className="App container">
-      <Routes>
+      <h1>App Page</h1>
+      {/* <Routes>
         <Route path="/" element={<Home />} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 }
