@@ -39,6 +39,8 @@ function Startgame(props) {
 function Playing(props) {
   const [ correcSym, setCorrecSym ] = useState(false)
   const [ wrongSym, setWrongSym ] = useState(false)
+  const [ summarize, setSummarize ] = useState(false)
+  const [ source, setSource ] = useState(false)
   const [ next, setNext ] = useState(false)
   const [ detail, setDetail ] = useState(false)
   const [ fullCostume, setFullCostume ] = useState(false)
@@ -155,6 +157,10 @@ function Playing(props) {
     shuffleCostume(listCostumes)
   }
 
+  const showSummarize = () => {
+    setSummarize(true)
+  }
+
   const detailsCharactor = (data) => {
     switch (data) {
       case 'costume1':
@@ -187,11 +193,65 @@ function Playing(props) {
       { correcSym ? <div class="checkmark draw animated fadeIn"></div> : ''}
       { next ? 
         <div>
-          <div className='all-btn-last'>
-            <div><button className="btn btn-danger" style={{width: '200px'}} onClick={playAgain}>เล่นอีกครั้ง</button></div>
-            <div><button className="btn btn-info" style={{width: '200px'}} onClick={playAgain}>สรุปความรู้เพิ่มเติม</button></div>
-            <div><button className="btn btn-primary" style={{width: '200px'}} onClick={playAgain}>แหล่งอ้างอิง</button></div>
-          </div>
+          { summarize || source ? 
+            <div>
+              {summarize ? 
+              <div className='homepage' style={{border: '1px solid #a9a9a9', borderRadius: '5px',padding: '10px 20px', width: '80%', height: '400px', overflow: 'auto'}}>
+                <p>
+                  <h1>สรุป</h1>
+                  <p style={{textAlign: 'left', fontSize: '18px', textIndent: '50px'}}>ดังนี้ จะเห็นว่าชนิดของผ้ามีความสำคัญมากกว่ารูปแบบของเสื้อ ซึ่งจะมีรูปทรงคล้ายๆ กัน และในสมัยโบราณนั้น เมื่อข้าราชการมีความดีความชอบ ก็จะได้รับพระราชทานเสื้ออย่างดี หรือผ้านุ่งเป็นรางวัล และในสมัยรัชกาลที่ ๕ ก็ยังเคยปรากฎว่า ได้พระราชทานรางวัลพวกแสดงละครด้วยผ้าลาย คือ ผ้านุ่งโจง
+                    กระเบน ซึ่งนิยมนุ่งกันอยู่ในสมัยนั้น
+                  </p>
+                  <p style={{textAlign: 'left', fontSize: '18px', textIndent: '50px'}}>การแต่งกาย ของคนไทยในสมัยโบราณไม่มีแบบมากนัก แต่จะกล่าวถึงเรื่องสีและชนิดของผ้ามากกว่า คนธรรมดาทั่วๆ ไปก็ใช้ผ้าที่ทอใช้เอง ผู้ที่มีฐานะดี หรือเป็นข้าราชการ มีผ้าที่มีราคาใช้ ผ้าอย่างดีจะมาจากต่างประเทศ</p>
+                  <h1>ความรู้เพิ่มเติม</h1>
+                  <p style={{textAlign: 'left', fontSize: '18px', textIndent: '50px'}}>ผ้าเข้มขาบ เป็นผ้าที่ใช้ไหมทอควบกับทองแล่งมีลักษณะเป็นริ้วตามยาว มียกดอกด้วย บางทีอาจยกดอกสีเดียว บางครั้งอาจยกดอกหลายสี ลักษณะการทอจะใช้แผ่นเงินกาไหล่ทองมาแผ่บาง ๆ หุ้มเส้นไหมแล้วทอ โดยใช้ปริมาณใหม่ทองสลับกับไหมธรรมดา ผ้าเข้มขามมีกล่าวถึงในเรื่อง ขุนช้างขุนแผน ตอนพระพันวษาแต่งองค์จะประพาสป่า กล่าวว่า</p>
+                  <p style={{textAlign: 'center', fontSize: '18px', textIndent: '50px'}}>
+                    {/* <span style={{marginRight: '15px'}}></span>	<span></span> */}
+                    <div className='row'>
+                      <div className='col-md-6 text-left' style={{paddingLeft: '200px'}}>
+                        ทรงเครื่องต้นสำหรับประพาสไทย
+                      </div>
+                      <div className='col-md-6 text-left'>
+                        ตามพิชัยฤกษ์กำลังวัน
+                      </div>
+                    </div>
+                  </p>
+                  <p style={{textAlign: 'center', fontSize: '18px', textIndent: '50px'}}>
+                    <div className='row'>
+                      <div className='col-md-6 text-left' style={{paddingLeft: '200px'}}>
+                      สนับเพลาเชิงงอนช้อนกราย
+                      </div>
+                      <div className='col-md-6 text-left'>
+                      พระภูษาเข้มขาบริ้วทองคั่น
+                      </div>
+                    </div>
+                    {/* <span style={{marginRight: '30px', marginLeft: '200px'}}></span> <span></span> */}
+                  </p>
+                  
+                </p>
+                <button className="btn btn-danger" onClick={() => {setSummarize(false)}}>ปิด</button>
+              </div> : ''}
+              {source ? <div className='homepage' style={{border: '1px solid #a9a9a9', borderRadius: '5px',padding: '10px 20px', width: '80%', height: '400px', overflow: 'auto'}}>
+                <p style={{textAlign: 'left', fontSize: '18px', textIndent: '25px'}}>
+                  <h1>แหล่งอ้างอิง</h1>
+                  <p>1. https://www.facebook.com/boraannaanma/photos/a.1721168658137287/2799458320308310/?type=3&_rdr</p>
+                  <p>2. https://swis.montfort.ac.th/html_edu/cgi-bin/main_php/print_informed.php?id_count_inform=2261</p>
+                  <p>3. https://www.saranukromthai.or.th/sub/book/book.php?book=18&chap=3&page=t18-3-l1.htm</p>
+                  <p>4. https://th.wikipedia.org/wiki/ตัวละครในขุนช้างขุนแผน</p>
+                  <p>5. https://www.baanjomyut.com/library_2/history_of_costume/02_6.html</p>
+                  <p>6. https://www.tungsong.com/NakhonSri/manufacture/Textile/Textile_03.html</p>
+                  <p>7. https://kb.psu.ac.th/psukb/bitstream/2010/6897/8/Chapter3__120-151_.pdf</p>
+                </p>
+                <button className="btn btn-danger" onClick={() => {setSource(false)}}>ปิด</button>
+              </div> : ''}
+            </div> : 
+            <div className='all-btn-last'>
+              <div><button className="btn btn-danger" style={{width: '200px'}} onClick={playAgain}>เล่นอีกครั้ง</button></div>
+              <div><button className="btn btn-info" style={{width: '200px'}} onClick={showSummarize}>สรุปความรู้เพิ่มเติม</button></div>
+              <div><button className="btn btn-primary" style={{width: '200px'}} onClick={() => {setSource(true)}}>แหล่งอ้างอิง</button></div>
+            </div>
+          }
+          
           
         </div> :
         <>
@@ -208,7 +268,7 @@ function Playing(props) {
               <div id="costume" className='col-md-7 col-sm-12'>
               { detail ? 
               <div style={{border: '1px solid #a9a9a9', borderRadius: '5px',padding: '10px 20px', width: '85%', height: '350px'}}>
-                <p style={{textAlign: 'left'}}>{detailsCharactor(charactor)}</p>
+                <p style={{textAlign: 'left', fontSize: '20px', textIndent: '25px'}}>{detailsCharactor(charactor)}</p>
                 <button className="btn btn-danger" onClick={() => {setNext(true)}}>ถัดไป</button>
               </div> :
               
