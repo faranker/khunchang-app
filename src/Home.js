@@ -103,7 +103,6 @@ function Playing(props) {
         array[randomIndex], array[currentIndex]];
     }
 
-    console.log(array[0].name);
     setCharactor(array[0].name)
   }
 
@@ -136,16 +135,18 @@ function Playing(props) {
 
   const chooseCostume = (data) => {
     if (data.pair === charactor) {
-      console.log('correc !');
       setCorrecSym(true)
       setFullCostume(true)
       setTimeout(() => {
         setCorrecSym(false)
         setDetail(true)
-      }, 3000);
+      }, 2000);
       
     } else {
-      console.log('wrong !');
+      setWrongSym(true)
+      setTimeout(() => {
+        setWrongSym(false)
+      }, 2000);
     }
   }
 
@@ -190,7 +191,13 @@ function Playing(props) {
 
   return (
     <div>
-      { correcSym ? <div class="checkmark draw animated fadeIn"></div> : ''}
+      
+      { correcSym ? 
+      <span class="checkmark animated fadeIn">
+        <div class="checkmark_stem"></div>
+        <div class="checkmark_kick"></div>
+      </span> : ''}
+      { wrongSym ? <div class="close-sym animated fadeIn"></div> : ''}
       { next ? 
         <div>
           { summarize || source ? 
@@ -199,48 +206,87 @@ function Playing(props) {
               <div className='homepage' style={{border: '1px solid #a9a9a9', borderRadius: '5px',padding: '10px 20px', width: '80%', height: '400px', overflow: 'auto'}}>
                 <p>
                   <h1>สรุป</h1>
-                  <p style={{textAlign: 'left', fontSize: '18px', textIndent: '50px'}}>ดังนี้ จะเห็นว่าชนิดของผ้ามีความสำคัญมากกว่ารูปแบบของเสื้อ ซึ่งจะมีรูปทรงคล้ายๆ กัน และในสมัยโบราณนั้น เมื่อข้าราชการมีความดีความชอบ ก็จะได้รับพระราชทานเสื้ออย่างดี หรือผ้านุ่งเป็นรางวัล และในสมัยรัชกาลที่ ๕ ก็ยังเคยปรากฎว่า ได้พระราชทานรางวัลพวกแสดงละครด้วยผ้าลาย คือ ผ้านุ่งโจง
+                  <p style={{textAlign: 'left', fontSize: '16px', textIndent: '50px'}}>ดังนี้ จะเห็นว่าชนิดของผ้ามีความสำคัญมากกว่ารูปแบบของเสื้อ ซึ่งจะมีรูปทรงคล้ายๆ กัน และในสมัยโบราณนั้น เมื่อข้าราชการมีความดีความชอบ ก็จะได้รับพระราชทานเสื้ออย่างดี หรือผ้านุ่งเป็นรางวัล และในสมัยรัชกาลที่ ๕ ก็ยังเคยปรากฎว่า ได้พระราชทานรางวัลพวกแสดงละครด้วยผ้าลาย คือ ผ้านุ่งโจง
                     กระเบน ซึ่งนิยมนุ่งกันอยู่ในสมัยนั้น
                   </p>
-                  <p style={{textAlign: 'left', fontSize: '18px', textIndent: '50px'}}>การแต่งกาย ของคนไทยในสมัยโบราณไม่มีแบบมากนัก แต่จะกล่าวถึงเรื่องสีและชนิดของผ้ามากกว่า คนธรรมดาทั่วๆ ไปก็ใช้ผ้าที่ทอใช้เอง ผู้ที่มีฐานะดี หรือเป็นข้าราชการ มีผ้าที่มีราคาใช้ ผ้าอย่างดีจะมาจากต่างประเทศ</p>
+                  <p style={{textAlign: 'left', fontSize: '16px', textIndent: '50px'}}>การแต่งกาย ของคนไทยในสมัยโบราณไม่มีแบบมากนัก แต่จะกล่าวถึงเรื่องสีและชนิดของผ้ามากกว่า คนธรรมดาทั่วๆ ไปก็ใช้ผ้าที่ทอใช้เอง ผู้ที่มีฐานะดี หรือเป็นข้าราชการ มีผ้าที่มีราคาใช้ ผ้าอย่างดีจะมาจากต่างประเทศ</p>
                   <h1>ความรู้เพิ่มเติม</h1>
-                  <p style={{textAlign: 'left', fontSize: '18px', textIndent: '50px'}}>ผ้าเข้มขาบ เป็นผ้าที่ใช้ไหมทอควบกับทองแล่งมีลักษณะเป็นริ้วตามยาว มียกดอกด้วย บางทีอาจยกดอกสีเดียว บางครั้งอาจยกดอกหลายสี ลักษณะการทอจะใช้แผ่นเงินกาไหล่ทองมาแผ่บาง ๆ หุ้มเส้นไหมแล้วทอ โดยใช้ปริมาณใหม่ทองสลับกับไหมธรรมดา ผ้าเข้มขามมีกล่าวถึงในเรื่อง ขุนช้างขุนแผน ตอนพระพันวษาแต่งองค์จะประพาสป่า กล่าวว่า</p>
-                  <p style={{textAlign: 'center', fontSize: '18px', textIndent: '50px'}}>
-                    {/* <span style={{marginRight: '15px'}}></span>	<span></span> */}
+                  <p style={{textAlign: 'left', fontSize: '16px', textIndent: '50px'}}>ผ้าเข้มขาบ เป็นผ้าที่ใช้ไหมทอควบกับทองแล่งมีลักษณะเป็นริ้วตามยาว มียกดอกด้วย บางทีอาจยกดอกสีเดียว บางครั้งอาจยกดอกหลายสี ลักษณะการทอจะใช้แผ่นเงินกาไหล่ทองมาแผ่บาง ๆ หุ้มเส้นไหมแล้วทอ โดยใช้ปริมาณใหม่ทองสลับกับไหมธรรมดา ผ้าเข้มขามมีกล่าวถึงในเรื่อง ขุนช้างขุนแผน ตอนพระพันวษาแต่งองค์จะประพาสป่า กล่าวว่า</p>
+                  <p style={{textAlign: 'center', fontSize: '16px'}}>
                     <div className='row'>
-                      <div className='col-md-6 text-left' style={{paddingLeft: '200px'}}>
+                      <div className='col-md-6 col-sm-12 poet'>
                         ทรงเครื่องต้นสำหรับประพาสไทย
                       </div>
-                      <div className='col-md-6 text-left'>
+                      <div className='col-md-6 col-sm-12 poet2'>
                         ตามพิชัยฤกษ์กำลังวัน
                       </div>
                     </div>
                   </p>
-                  <p style={{textAlign: 'center', fontSize: '18px', textIndent: '50px'}}>
+                  <p style={{textAlign: 'center', fontSize: '16px'}}>
                     <div className='row'>
-                      <div className='col-md-6 text-left' style={{paddingLeft: '200px'}}>
+                      <div className='col-md-6 col-sm-12 poet'>
                       สนับเพลาเชิงงอนช้อนกราย
                       </div>
-                      <div className='col-md-6 text-left'>
+                      <div className='col-md-6 col-sm-12 poet2'>
                       พระภูษาเข้มขาบริ้วทองคั่น
                       </div>
                     </div>
-                    {/* <span style={{marginRight: '30px', marginLeft: '200px'}}></span> <span></span> */}
                   </p>
-                  
+                  <p style={{textAlign: 'left', fontSize: '16px', textIndent: '50px'}}>ผ้าโหมด เป็นผ้าที่ใช้กระดาษทองแล่งตัดให้เป็นเส้น ๆ แล้วนำมาทอสลับกับไหม มีหลายสีเรียกชื่อตามสีของไหม เช่น โหมดแดง โหมดเหลือง โหมดเขียว ผ้าโหมดนิยมใช้ทำพระมาลา ผ้าชนิดนี้ปรากฏในขุนช้างขุนแผน ตอน พระพันวษาพระราชทานผ้าให้ขุนแผนและพลายงาม เมื่อจะยกทัพไปตีเมืองเชียงใหม่กล่าวถึงผ้าโหมดไว้ว่า</p>
+                  <p style={{textAlign: 'center', fontSize: '16px'}}>
+                    <div className='row'>
+                      <div className='col-md-6 col-sm-12 poet'>
+                      แล้วจึงตรัสสั่งคลังวิเสท
+                      </div>
+                      <div className='col-md-6 col-sm-12 poet2'>
+                      ให้จัดเสื้อโหมดเทศอย่างก้านแย่ง
+                      </div>
+                    </div>
+                  </p>
+                  <p style={{textAlign: 'center', fontSize: '16px'}}>
+                    <div className='row'>
+                      <div className='col-md-6 col-sm-12 poet'>
+                      พรจันดวงพุดตานส่านสีแดง
+                      </div>
+                      <div className='col-md-6 col-sm-12 poet2'>
+                      ทั้งสมปักตามตำแหน่งขุนนางใน
+                      </div>
+                    </div>
+                  </p>
+                  <p style={{textAlign: 'left', fontSize: '16px', textIndent: '50px'}}>ผ้ากรองทอง เป็นผ้าที่เกิดจากการนำเส้นลวดทอง หรือไหมทองมาถักทอกันเป็นผืนผ้า เมื่อต้องการให้มีความงดงามมากขึ้นก็มีการนำปีกแมลงทับมาตัดเป็นชิ้นเล็ก ๆ แล้วนำมาปักลงไปบนผืนผ้า นิยมใช้ทำเสื้อครุยของพระมหากษัตริย์ สไบ หรือผ้าทรงสะพัก สำหรับเจ้านายสตรีชั้นสูง ผ้ากรองทองนี้พบในเรื่องขุนช้างขุนแผนตอนขุนช้างแต่งตัวจะไปขอนางพิมกล่าวถึงผ้ากรองทองไว้ว่า</p>
+                  <p style={{textAlign: 'center', fontSize: '16px'}}>
+                    <div className='row'>
+                      <div className='col-md-6 col-sm-12 poet'>
+                      ครั้งแล้วลุกออกมานอกห้อง
+                      </div>
+                      <div className='col-md-6 col-sm-12 poet2'>
+                      นุ่งยกห่มกรองทองเฉิดฉาย
+                      </div>
+                    </div>
+                  </p>
+                  <p style={{textAlign: 'center', fontSize: '16px'}}>
+                    <div className='row'>
+                      <div className='col-md-6 col-sm-12 poet'>
+                      เรียกบ่าวเล็กเล็กเด็กผู้ชาย
+                      </div>
+                      <div className='col-md-6 col-sm-12 poet2'>
+                      มากมายตามหลังสะพรั่งมา
+                      </div>
+                    </div>
+                  </p>
                 </p>
                 <button className="btn btn-danger" onClick={() => {setSummarize(false)}}>ปิด</button>
               </div> : ''}
               {source ? <div className='homepage' style={{border: '1px solid #a9a9a9', borderRadius: '5px',padding: '10px 20px', width: '80%', height: '400px', overflow: 'auto'}}>
                 <p style={{textAlign: 'left', fontSize: '18px', textIndent: '25px'}}>
                   <h1>แหล่งอ้างอิง</h1>
-                  <p>1. https://www.facebook.com/boraannaanma/photos/a.1721168658137287/2799458320308310/?type=3&_rdr</p>
-                  <p>2. https://swis.montfort.ac.th/html_edu/cgi-bin/main_php/print_informed.php?id_count_inform=2261</p>
-                  <p>3. https://www.saranukromthai.or.th/sub/book/book.php?book=18&chap=3&page=t18-3-l1.htm</p>
-                  <p>4. https://th.wikipedia.org/wiki/ตัวละครในขุนช้างขุนแผน</p>
-                  <p>5. https://www.baanjomyut.com/library_2/history_of_costume/02_6.html</p>
-                  <p>6. https://www.tungsong.com/NakhonSri/manufacture/Textile/Textile_03.html</p>
-                  <p>7. https://kb.psu.ac.th/psukb/bitstream/2010/6897/8/Chapter3__120-151_.pdf</p>
+                  <p>1. <a href='#' onClick={() => {window.open('https://www.facebook.com/boraannaanma/photos/a.1721168658137287/2799458320308310/?type=3&_rdr')}}>https://www.facebook.com/boraannaanma/photos/a.1721168658137287/2799458320308310/?type=3&_rdr</a></p>
+                  <p>2. <a href='#' onClick={() => {window.open('https://swis.montfort.ac.th/html_edu/cgi-bin/main_php/print_informed.php?id_count_inform=2261')}}>https://swis.montfort.ac.th/html_edu/cgi-bin/main_php/print_informed.php?id_count_inform=2261</a></p>
+                  <p>3. <a href='#' onClick={() => {window.open('https://www.saranukromthai.or.th/sub/book/book.php?book=18&chap=3&page=t18-3-l1.htm')}}>https://www.saranukromthai.or.th/sub/book/book.php?book=18&chap=3&page=t18-3-l1.htm</a></p>
+                  <p>4. <a href='#' onClick={() => {window.open('https://th.wikipedia.org/wiki/ตัวละครในขุนช้างขุนแผน')}}>https://th.wikipedia.org/wiki/ตัวละครในขุนช้างขุนแผน</a></p>
+                  <p>5. <a href='#' onClick={() => {window.open('https://www.baanjomyut.com/library_2/history_of_costume/02_6.html')}}>https://www.baanjomyut.com/library_2/history_of_costume/02_6.html</a></p>
+                  <p>6. <a href='#' onClick={() => {window.open('https://www.tungsong.com/NakhonSri/manufacture/Textile/Textile_03.html')}}>https://www.tungsong.com/NakhonSri/manufacture/Textile/Textile_03.html</a></p>
+                  <p>7. <a href='#' onClick={() => {window.open('https://kb.psu.ac.th/psukb/bitstream/2010/6897/8/Chapter3__120-151_.pdf')}}>https://kb.psu.ac.th/psukb/bitstream/2010/6897/8/Chapter3__120-151_.pdf</a></p>
                 </p>
                 <button className="btn btn-danger" onClick={() => {setSource(false)}}>ปิด</button>
               </div> : ''}

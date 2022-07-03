@@ -1,6 +1,9 @@
 body {
   background-image: url('../public/bg/1680x1050-px-backgrounds-brown-burn-dark-darker-804926-wallhere.com.jpg');
   background-position:bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
   /* filter: blur(8px);
   -webkit-filter: blur(8px); */
   
@@ -71,7 +74,7 @@ body {
   font-size: 35px !important;
 }
 
-.checkmark.draw:after {
+/* .checkmark:after {
   transform: scaleX(-1) rotate(135deg);
 }
 .checkmark:after {
@@ -86,6 +89,64 @@ body {
   left: 45%;
   top: 50%;
   position: absolute;
+} */
+
+.checkmark {
+  z-index: 999;
+  display:inline-block;
+  position: absolute;
+  top: 25%;
+  left: 60%;
+  /* transform: translate(-50%,-50%); */
+  /* width: 22px;
+  height:22px; */
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
+
+.checkmark_stem {
+  position: absolute;
+    width: 10px;
+    height: 300px;
+    background-color: #5cb85c;
+    left: 11px;
+    top: 6px;
+}
+
+.checkmark_kick {
+  position: absolute;
+  width: 100px;
+  height: 10px;
+  background-color: #5cb85c;
+  left: -82px;
+  top: 296px;
+}
+
+.close-sym {
+  z-index: 99;
+  position: absolute;
+  left: 48%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+  /* width: 32px;
+  height: 32px; */
+}
+
+.close-sym:before, .close-sym:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 20.5em;
+  width: 10px;
+  
+  background-color: rgb(204, 0, 0);
+}
+.close-sym:before {
+  transform: rotate(45deg);
+}
+.close-sym:after {
+  transform: rotate(-45deg);
 }
 
 .homepage {
@@ -102,9 +163,43 @@ body {
   transform: translate(-50%, -50%);
 }
 
+h1, p {
+  color: #fff !important;
+  text-shadow: 5px 5px 10px #000;
+}
+
+.slick-dots li button:before, .slick-dots li.slick-active button:before {
+  color: #fff !important;
+}
+
+
+.poet {
+  padding-left: 230px !important;
+}
+
+.poet2 {
+  padding-left: 80px !important;
+}
+
+.poet,.poet2 {
+  text-align: left;
+}
+
 @media (min-width: 768px) {
   .container {
     max-width: 850px;
+  }
+}
+
+@media screen and (max-width: 1210px) {
+  .poet {
+    padding-left: 180px !important;
+  }
+}
+
+@media screen and (max-width: 1110px) {
+  .poet {
+    padding-left: 150px !important;
   }
 }
 
@@ -114,12 +209,39 @@ body {
     padding-left: 5em;
     padding-right: 5em;
   }
+
+  .poet {
+    padding-left: 110px !important;
+  }
+}
+
+@media screen and (max-width: 866px) {
+  .poet {
+    padding-left: 70px !important;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  /* .poet {
+    padding-left: 40px !important;
+  } */
+}
+
+@media screen and (max-width: 782px) {
+  /* .poet {
+    padding-left: -40px !important;
+  } */
 }
 
 @media screen and (max-width: 768px) {
   #charactor {
     padding-left: 11em;
     padding-right: 11em;
+  }
+
+  .poet,.poet2 {
+    padding-left: 0.75rem !important;
+    text-align: center !important;
   }
 }
 
@@ -137,11 +259,4 @@ body {
   }
 }
 
-h1, p {
-  color: #fff !important;
-  text-shadow: 5px 5px 10px #000;
-}
 
-.slick-dots li button:before, .slick-dots li.slick-active button:before {
-  color: #fff !important;
-}
